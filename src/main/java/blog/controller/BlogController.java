@@ -25,7 +25,7 @@ public class BlogController {
     }
 
     @GetMapping("/blogs")
-    public ResponseEntity<List<Blog>> findAll(Pageable pageable) {
+    public ResponseEntity<List<Blog>> findAll() {
         return new ResponseEntity<>(this.blogService.findAll(), HttpStatus.OK);
     }
 
