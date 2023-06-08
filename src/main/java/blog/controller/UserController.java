@@ -29,4 +29,14 @@ public class UserController {
             return new ResponseEntity<>(new User(),HttpStatus.OK);
         }
     }
+    @GetMapping("/users/{username}/exists")
+    public ResponseEntity<Boolean> checkUsernameExists(@PathVariable String username) {
+        boolean exits = this.userService.existsUserByUsername(username);
+        return new ResponseEntity<>(exits,HttpStatus.OK);
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<User> create(@RequestBody User user) {
+        return new ResponseEntity<>(this.userService.save(user),HttpStatus.CREATED );
+    }
 }

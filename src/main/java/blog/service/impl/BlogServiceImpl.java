@@ -63,4 +63,9 @@ public class BlogServiceImpl implements IBlogService {
             this.blogRepository.save(blog);
         }
     }
+
+    @Override
+    public List<Blog> findAllByTitleContaining(String keyword) {
+        return this.blogRepository.findAllByTitleContaining(keyword);
+    }
 }

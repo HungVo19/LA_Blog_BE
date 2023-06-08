@@ -13,4 +13,6 @@ public interface IBlogRepository extends JpaRepository <Blog,Long> {
 
     List<Blog> findAllByDeleteStatusIsFalseAndUserId(Long user_id);
 
+    List<Blog> findAllByTitleContaining(String keyword);
+
 }

@@ -58,4 +58,9 @@ public class BlogController {
     public ResponseEntity<Blog> update(@RequestBody Blog blog) {
         return new ResponseEntity<>(this.blogService.save(blog),HttpStatus.OK);
     }
+
+    @GetMapping("/blogs/search")
+    public ResponseEntity<List<Blog>> search(@RequestParam(value = "q") String keyword) {
+        return new ResponseEntity<>(this.blogService.findAllByTitleContaining(keyword),HttpStatus.OK);
+    }
 }

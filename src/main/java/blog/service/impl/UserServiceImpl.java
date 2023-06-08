@@ -39,11 +39,16 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User save(User user) {
-        return null;
+        return this.userRepository.save(user);
     }
 
     @Override
     public void delete(Long aLong) {
 
+    }
+
+    @Override
+    public boolean existsUserByUsername(String username) {
+        return this.userRepository.existsUserByUsername(username);
     }
 }
