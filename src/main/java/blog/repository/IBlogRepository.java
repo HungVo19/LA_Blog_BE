@@ -11,8 +11,8 @@ import java.util.Optional;
 public interface IBlogRepository extends JpaRepository <Blog,Long> {
     List<Blog> findAllByDeleteStatusIsFalseOrderByIdDesc();
 
-    List<Blog> findAllByDeleteStatusIsFalseAndUserId(Long user_id);
+    List<Blog> findAllByDeleteStatusIsFalseAndUserIdOrderByIdDesc(Long user_id);
 
-    List<Blog> findAllByTitleContaining(String keyword);
+    List<Blog> findAllByTitleContainingAndDeleteStatusIsFalse(String keyword);
 
 }

@@ -19,7 +19,7 @@ public class BlogServiceImpl implements IBlogService {
 
     @Override
     public List<Blog> findAllByDeleteStatusIsFalseAndUserId(Long user_id) {
-        return this.blogRepository.findAllByDeleteStatusIsFalseAndUserId(user_id);
+        return this.blogRepository.findAllByDeleteStatusIsFalseAndUserIdOrderByIdDesc(user_id);
     }
 
     @Autowired
@@ -66,6 +66,6 @@ public class BlogServiceImpl implements IBlogService {
 
     @Override
     public List<Blog> findAllByTitleContaining(String keyword) {
-        return this.blogRepository.findAllByTitleContaining(keyword);
+        return this.blogRepository.findAllByTitleContainingAndDeleteStatusIsFalse(keyword);
     }
 }
