@@ -1,5 +1,6 @@
 package blog.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,12 +15,15 @@ public class Tag {
     private Long id;
     @Column(unique = true)
     private String name;
-    @ManyToMany(targetEntity = Blog.class)
-    @JoinTable(
-            name = "tag_blog",
-            joinColumns = @JoinColumn(name = "tag_id"),
-            inverseJoinColumns = @JoinColumn(name = "blog_id")
-
-    )
+    @ManyToMany(mappedBy = "tagBlog")
+    @JsonIgnore
     private Set<Blog> blogs = new HashSet<>();
+
+    public Tag(String name) {
+        this.name = name;
+    }
+
+    public Tag() {
+
+    }
 }

@@ -63,4 +63,14 @@ public class BlogController {
     public ResponseEntity<List<Blog>> search(@RequestParam(value = "q") String keyword) {
         return new ResponseEntity<>(this.blogService.findAllByTitleContaining(keyword),HttpStatus.OK);
     }
+
+    @GetMapping("/blogss/{blogId}")
+    public ResponseEntity<Blog> getBlogWithCommentsByBlogId(@PathVariable Long blogId) {
+        return new ResponseEntity<>(this.blogService.findById(blogId).get(),HttpStatus.OK);
+    }
+
+    @GetMapping("/blogs/tag/{tagId}")
+    public ResponseEntity<List<Blog>> getAllBlogsByTag(@PathVariable Long tagId) {
+        return new ResponseEntity<>(this.blogService.findAllBlogsByTag(tagId),HttpStatus.OK );
+    }
 }

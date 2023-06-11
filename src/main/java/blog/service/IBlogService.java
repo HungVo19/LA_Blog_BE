@@ -11,5 +11,10 @@ public interface IBlogService extends ICoreService<Blog, Long> {
     void setDeleteStatusToFalse(Long blogID);
 
     List<Blog> findAllByTitleContaining(String keyword);
+    List<Blog> findAllBlogsByTag(Long tagId);
+
+    int setTagsBlog(Long blogId, Long tagId);
+
+    void resetTagsBlog(Long blogId);
 
 }
